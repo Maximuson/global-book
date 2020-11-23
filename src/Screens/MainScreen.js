@@ -1,13 +1,34 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Button,
+  SafeAreaView,
+  StatusBar,
+} from "react-native";
 import { connect } from "react-redux";
+import { THEME } from "../theme";
 
-const Main = () => {
+const MainScreen = ({ navigation }) => {
+  const goToPost = () => {
+    navigation.navigate("Post");
+  };
+
   return (
-    <View style={{ ...styles.center, backgroundColor: "#fff" }}>
+    <SafeAreaView
+      style={{ ...styles.center, backgroundColor: THEME.MAIN_COLOR }}
+    >
+      <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
       <Text style={styles.text}>Main screen</Text>
-    </View>
+
+      <Button title="К посту" onPress={goToPost} />
+    </SafeAreaView>
   );
+};
+
+MainScreen.navigationOptions = {
+  headerTitle: "Дневник",
 };
 
 const styles = StyleSheet.create({
@@ -20,11 +41,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "roboto-black",
     fontSize: 24,
+    color: "#fff",
   },
 });
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default MainScreen;

@@ -23,11 +23,7 @@ function App() {
     );
   }
 
-  return (
-    <Provider store={store}>
-      <AppNavigation />
-    </Provider>
-  );
+  return <AppNavigation />;
 }
 
 export default App;

@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { connect } from "react-redux";
 
-const CreatePostScreen = () => {
+const AboutScreen = () => {
   return (
     <View style={styles.center}>
       <Text style={styles.text}>About Screen</Text>
@@ -22,8 +22,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({});
+// const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({});
+// const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePostScreen);
+// export default connect(mapStateToProps, mapDispatchToProps)(CreatePostScreen);
+
+export default AboutScreen;
