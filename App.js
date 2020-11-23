@@ -1,28 +1,33 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
+// import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { connect, Provider } from "react-redux";
-import Main from "./src/Screens/Main";
+import { Provider } from "react-redux";
 import store from "./src/store";
 
+import { AppLoading } from "expo";
+import { bootstrap } from "./src/bootstrap";
+import { AppNavigation } from "./src/navigation/AppNavigation";
+
 function App() {
+  const [isReady, setIsReady] = useState(false);
+
+  if (!isReady) {
+    return (
+      <AppLoading
+        startAsync={bootstrap}
+        onFinish={() => setIsReady(true)}
+        onError={(err) => {
+          console.log(err);
+        }}
+      />
+    );
+  }
+
   return (
     <Provider store={store}>
-      <View style={styles.container}>
-        <Main />
-        <StatusBar style="auto" />
-      </View>
+      <AppNavigation />
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default App;
