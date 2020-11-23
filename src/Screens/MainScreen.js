@@ -1,13 +1,12 @@
 import React from "react";
 import {
-  View,
   StyleSheet,
   Text,
   Button,
   SafeAreaView,
   StatusBar,
 } from "react-native";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { THEME } from "../theme";
 
 const MainScreen = ({ navigation }) => {

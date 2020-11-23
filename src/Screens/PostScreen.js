@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, StatusBar } from "react-native";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 const PostScreen = () => {
   return (
