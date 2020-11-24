@@ -2,18 +2,18 @@ import React from "react";
 import { SafeAreaView, StyleSheet, Text, StatusBar } from "react-native";
 // import { connect } from "react-redux";
 
-const PostScreen = () => {
+const PostScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ ...styles.center, backgroundColor: "#fff" }}>
       <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
 
-      <Text style={styles.text}>Post Screen</Text>
+      <Text style={styles.text}>Post {navigation.getParam("postId")}</Text>
     </SafeAreaView>
   );
 };
 
 PostScreen.navigationOptions = {
-  headerTitle: "Пост номер 1",
+  headerTitle: `Пост`,
 };
 
 const styles = StyleSheet.create({
