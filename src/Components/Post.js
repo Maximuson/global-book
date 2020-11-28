@@ -52,8 +52,9 @@ const styles = StyleSheet.create({
   },
   item: {
     // height: 150,
-    width:
-      Dimensions.get("window").width - Dimensions.get("window").width * 0.1,
+    width: "100%",
+    backgroundColor: "#3f3f3f",
+    // Dimensions.get("window").width - Dimensions.get("window").width * 0.1,
 
     padding: 15,
     // flex: 1,
