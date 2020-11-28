@@ -1,1 +1,9 @@
 export const TEMP = "TEMP";
+
+export const FETCH_POSTS_START = "FETCH_POSTS_START";
+export const FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS";
+export const FETCH_POSTS_FAIL = "FETCH_POSTS_FAIL";
+
+export const GET_POST_START = "GET_POST_START";
+export const GET_POST_SUCCESS = "GET_POST_SUCCESS";
+export const GET_POST_FAIL = "GET_POST_FAIL";

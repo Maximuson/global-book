@@ -8,7 +8,7 @@ const Post = ({ id, title, text, goToPost }) => {
   const formatedText = (text) => {
     return text.length > 150 ? `${text.slice(0, 150)}...` : text;
   };
-  // useEffect(() => {}, [isOpen]);
+
   return (
     <View style={styles.itemContainer}>
       <View style={[styles.item, !isOpen && { maxHeight: 140 }]}>

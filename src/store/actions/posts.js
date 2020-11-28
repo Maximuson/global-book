@@ -1,17 +1,9 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  Button,
-  SafeAreaView,
-  StatusBar,
-  View,
-} from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import Post from "../Components/Post";
-// import { connect } from "react-redux";
-import { THEME } from "../theme";
-const posts = [
+import * as actionTypes from "./actionTypes";
+
+import axios from "axios";
+
+//#region mock data
+const fakePosts = [
   {
     id: 1,
     title: "Коротание ночей",
@@ -49,56 +41,70 @@ const posts = [
       "asda asdas sdas  djs jsd sjd sjd sdjsdhsdf sd sd ds sdhajwhda a sada dawdawd dadawd awdawdawd awda",
   },
 ];
-const MainScreen = ({ navigation }) => {
-  const goToPost = (id) => {
-    navigation.navigate("Post", { postId: id });
+//#endregion
+
+const fetchPostsStart = () => {
+  return {
+    type: actionTypes.FETCH_POSTS_START,
   };
-
-  return (
-    <SafeAreaView
-      style={{
-        ...styles.center,
-        ...styles.window,
-        backgroundColor: THEME.MAIN_COLOR,
-      }}
-    >
-      <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
-      <ScrollView style={styles.postsList}>
-        {posts.map((item) => (
-          <Post goToPost={goToPost} key={item.id} {...item} />
-        ))}
-      </ScrollView>
-
-      {/* <Text style={styles.text}>Main screen</Text> */}
-
-      {/* <Button title="К посту" onPress={goToPost} /> */}
-    </SafeAreaView>
-  );
 };
 
-MainScreen.navigationOptions = {
-  headerTitle: "Дневник",
+const fetchPostsSuccess = (payload) => {
+  return {
+    type: actionTypes.FETCH_POSTS_SUCCESS,
+    payload,
+  };
 };
 
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  window: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-  },
-  text: {
-    fontFamily: "roboto-black",
-    fontSize: 24,
-    color: "#fff",
-  },
-  postsList: {
-    marginVertical: 20,
-  },
-});
+const fetchPostsFail = (err) => {
+  return {
+    type: actionTypes.FETCH_POSTS_FAIL,
+    payload: err,
+  };
+};
 
-export default MainScreen;
+const getPostStart = () => {
+  return {
+    type: actionTypes.GET_POST_START,
+  };
+};
+
+const getPostSuccess = (payload) => {
+  return {
+    type: actionTypes.GET_POST_SUCCESS,
+    payload,
+  };
+};
+
+const getPostFail = (err) => {
+  return {
+    type: actionTypes.GET_POST_FAIL,
+    payload: err,
+  };
+};
+
+export const fetchPosts = (payload) => {
+  return (dispatch) => {
+    dispatch(fetchPostsStart);
+
+    setTimeout(() => {
+      dispatch(fetchPostsSuccess(fakePosts));
+    }, 3000);
+
+    //handle error
+
+    //  dispatch(fetchPostsFail(err))
+  };
+};
+
+export const getPost = (data) => {
+  const mock = fakePosts.find((item) => item.id === data.id);
+  //   console.log(mock);
+  return (dispatch) => {
+    dispatch(getPostStart());
+
+    setTimeout(() => {
+      dispatch(getPostSuccess(mock));
+    }, 2000);
+  };
+};

@@ -1,9 +1,11 @@
 const { combineReducers } = require("redux");
 
 import tempReducer from "./temp";
+import postsReducer from "./posts";
 
 const appReducer = combineReducers({
   temp: tempReducer,
+  posts: postsReducer,
 });
 
 const rootReducer = (state, action) => {

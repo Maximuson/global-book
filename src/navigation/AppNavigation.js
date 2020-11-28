@@ -1,19 +1,19 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import MainScreen from "../Screens/MainScreen";
-import PostScreen from "../Screens/PostScreen";
+import MainContainer from "../Screens/Main/MainContainer";
+import PostContainer from "../Screens/Post/PostContainer";
 import { THEME } from "../theme";
 
 const PostNavigator = createStackNavigator(
   {
     Main: {
-      screen: MainScreen,
+      screen: MainContainer,
       navigationOptions: {
         headerShown: false,
       },
     },
     Post: {
-      screen: PostScreen,
+      screen: PostContainer,
     },
   },
   {

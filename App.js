@@ -1,7 +1,7 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-// import { Provider } from "react-redux";
-// import store from "./src/store";
+import { Provider } from "react-redux";
+import store from "./src/store";
 
 import { AppLoading } from "expo";
 import { bootstrap } from "./src/bootstrap";
@@ -12,17 +12,23 @@ function App() {
 
   if (!isReady) {
     return (
-      <AppLoading
-        startAsync={bootstrap}
-        onFinish={() => setIsReady(true)}
-        onError={(err) => {
-          console.log(err);
-        }}
-      />
+      <Provider store={store}>
+        <AppLoading
+          startAsync={bootstrap}
+          onFinish={() => setIsReady(true)}
+          onError={(err) => {
+            console.log(err);
+          }}
+        />
+      </Provider>
     );
   }
 
-  return <AppNavigation />;
+  return (
+    <Provider store={store}>
+      <AppNavigation />
+    </Provider>
+  );
 }
 
 export default App;
